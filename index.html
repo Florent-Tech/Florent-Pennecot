@@ -1,454 +1,652 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florent Penneçot - Technicien Réseaux & Systèmes | Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECSOL — Version Premium</title>
+  <meta name="description" content="Vitrine premium TECSOL : ingénierie solaire, innovation, supervision, formation et expertise." />
+  <style>
+    :root {
+      --tecsol-blue: #0b7a33;
+      --tecsol-blue-2: #f2c511;
+      --tecsol-dark: #075628;
+      --tecsol-dark-2: #043d1d;
+      --tecsol-soft: #f7f8ef;
+      --white: #ffffff;
+      --text: #0f172a;
+      --muted: #5f6b7a;
+      --border: rgba(15, 23, 42, 0.08);
+      --shadow: 0 20px 60px rgba(10, 34, 57, 0.08);
+      --radius: 28px;
+      --transition: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+      --container: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(calc(100% - 48px), var(--container)); margin: 0 auto; }
+    .section { position: relative; padding: 110px 0; }
+    .section-soft { background: var(--tecsol-soft); }
+    .section-dark {
+      background: linear-gradient(180deg, var(--tecsol-dark), #0b7a33);
+      color: var(--white);
+    }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+    .nav-wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; min-height: 84px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-logo {
+      height: 105px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .brand-title {
+      color: var(--tecsol-dark);
+      font-size: 1.1rem; font-weight: 800; letter-spacing: 0.24em;
+    }
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em;
+    }
+    .main-nav { display: flex; align-items: center; gap: 28px; }
+    .main-nav a {
+      font-size: 0.95rem; color: #334155;
+      transition: color var(--transition), transform var(--transition), background var(--transition);
+    }
+    .main-nav a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      color: #0a2239 !important;
+      background: #f2c511;
+      box-shadow: 0 16px 30px rgba(242,197,17,0.35);
+    }
+    .menu-toggle {
+      display: none; width: 48px; height: 48px; border: 1px solid var(--border);
+      border-radius: 14px; background: rgba(255,255,255,0.9); cursor: pointer; padding: 0;
+    }
+    .menu-toggle span {
+      display: block; width: 20px; height: 2px; background: var(--text);
+      margin: 5px auto; transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .hero {
+      overflow: hidden; padding-top: 80px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0,150,219,0.18), transparent 22%),
+        radial-gradient(circle at 90% 20%, rgba(10,34,57,0.12), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, rgba(234,247,255,0.9) 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.45;
+      background-image:
+        linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero::after {
+      content: ""; position: absolute; left: -10%; top: -15%; width: 18rem; height: 18rem;
+      background: rgba(242,197,17,0.25); border-radius: 50%; filter: blur(64px); pointer-events: none;
+    }
+    .hero-grid {
+      position: relative; display: grid; grid-template-columns: 1.08fr 0.92fr;
+      align-items: center; gap: 56px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px;
+      border: 1px solid rgba(0,150,219,0.22); background: rgba(0,150,219,0.06);
+      color: var(--tecsol-blue); font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.2em;
+    }
+    .hero h1, .section-heading h2, .split-intro h2, .career-block h2, .contact-intro h2 {
+      margin: 18px 0 0; line-height: 0.98; letter-spacing: -0.04em;
+    }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5.25rem); max-width: 780px; }
+    .hero-text, .section-heading p, .split-intro p, .career-block p, .contact-intro p {
+      color: var(--muted); font-size: 1.08rem; line-height: 1.9; max-width: 760px;
+    }
+    .hero-actions, .block-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 22px;
+      border-radius: 999px; border: 1px solid transparent; font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #0a2239;
+      background: #f2c511;
+      box-shadow: 0 18px 32px rgba(242,197,17,0.35);
+    }
+    .btn-secondary { color: var(--text); background: rgba(255,255,255,0.7); border-color: rgba(15,23,42,0.12); }
+    .btn-dark {
+      color: #ffffff;
+      background: #075628;
+    }
+    .btn-full { width: 100%; }
+
+    .hero-pills {
+      margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    .pill, .hero-subcard, .hero-card-main, .expert-card, .stat-card, .feature-item, .news-main, .newsletter, .career-block, .agencies-block, .contact-form {
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .pill {
+      padding: 18px; border-radius: 22px; background: rgba(255,255,255,0.78);
+      color: #334155; font-size: 0.92rem; line-height: 1.7;
+    }
+    .hero-card {
+      position: relative; padding: 28px; border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(234,247,255,0.9));
+      border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 30px 80px rgba(10,34,57,0.12);
+      transition: transform 200ms linear;
+    }
+    .hero-card::before {
+      content: ""; position: absolute; inset: auto -60px -70px auto; width: 220px; height: 220px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(0,150,219,0.14), transparent 70%); pointer-events: none;
+    }
+    .hero-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+    .hero-card-head h2 { margin: 8px 0 0; font-size: 1.9rem; line-height: 1.1; letter-spacing: -0.03em; }
+    .card-kicker, .news-top, .newsletter-top, .agencies-top {
+      color: var(--tecsol-blue); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em;
+    }
+    .card-kicker.soft { color: #64748b; }
+    .card-tag {
+      padding: 8px 12px; border: 1px solid rgba(15,23,42,0.08); border-radius: 999px; font-size: 0.8rem;
+      color: #475569; background: rgba(255,255,255,0.7);
+    }
+    .glass-card { background: rgba(255,255,255,0.76); backdrop-filter: blur(16px); }
+    .dark-card { background: linear-gradient(180deg, var(--tecsol-dark), #071521); color: var(--white); }
+    .hero-card-main, .hero-subcard { border-radius: 24px; padding: 22px; }
+    .hero-card-main strong, .hero-subcard strong, .news-main h3, .newsletter h3, .agencies-block h3 {
+      display: block; font-size: 1.55rem; line-height: 1.15; letter-spacing: -0.03em; margin-top: 8px;
+    }
+    .hero-card-main p, .hero-subcard p, .news-main p, .news-card p, .newsletter p, .agencies-block p, .contact-form span {
+      color: var(--muted); line-height: 1.8;
+    }
+    .dark-card p, .dark-card .card-kicker, .newsletter p, .contact-form span { color: rgba(255,255,255,0.76); }
+    .hero-card-grid { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .mini-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; color: #64748b; font-size: 0.9rem; }
+    .mini-dot {
+      width: 12px; height: 12px; border-radius: 50%; background: #f2c511;
+      box-shadow: 0 0 0 8px rgba(0,150,219,0.08);
+    }
+
+    .section-heading { max-width: 880px; margin: 0 auto 58px; text-align: center; }
+    .section-heading h2, .split-intro h2, .career-block h2, .contact-intro h2 { font-size: clamp(2.3rem, 4vw, 3.5rem); }
+    .section-heading.light h2, .section-heading.light p, .contact-intro h2, .contact-intro p { color: var(--white); }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .expert-card {
+      position: relative; overflow: hidden; padding: 30px; border-radius: var(--radius); background: var(--white);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .expert-card::before {
+      content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--tecsol-blue-2), transparent); opacity: 0; transition: opacity var(--transition);
+    }
+    .expert-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(10,34,57,0.12); border-color: rgba(0,150,219,0.14); }
+    .expert-card:hover::before { opacity: 1; }
+    .icon-badge {
+      display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 18px;
+      background: rgba(242,197,17,0.15); color: var(--tecsol-blue); font-size: 1.4rem; margin-bottom: 20px;
+    }
+    .expert-card h3 { margin: 0; font-size: 1.55rem; letter-spacing: -0.03em; }
+    .expert-card p { color: var(--muted); line-height: 1.8; margin: 14px 0 22px; }
+    .expert-card a { color: var(--tecsol-blue); font-weight: 700; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .stat-card {
+      position: relative; padding: 34px 30px; border-radius: var(--radius); background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px); border-color: rgba(255,255,255,0.1);
+    }
+    .stat-number, .stat-suffix { font-size: clamp(2.8rem, 4vw, 4rem); font-weight: 800; color: var(--white); letter-spacing: -0.05em; }
+    .stat-card p { margin: 12px 0 0; color: rgba(255,255,255,0.74); line-height: 1.7; }
+
+    .split-layout, .contact-layout {
+      display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 42px; align-items: start;
+    }
+    .feature-list { display: grid; gap: 18px; }
+    .feature-item { display: flex; gap: 18px; align-items: flex-start; padding: 24px; border-radius: 24px; background: var(--white); }
+    .feature-item span {
+      flex: 0 0 44px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%;
+      color: var(--white); background: #f2c511; font-weight: 800;
+    }
+    .feature-item p { margin: 0; color: #334155; line-height: 1.8; }
+
+    .news-layout, .dual-blocks { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; }
+    .news-main, .newsletter, .career-block, .agencies-block {
+      padding: 34px; border-radius: var(--radius); background: var(--white);
+    }
+    .news-cards { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .news-card { padding: 20px; border-radius: 22px; background: #f8fafc; }
+    .news-card span {
+      display: block; color: var(--tecsol-blue); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em;
+    }
+    .news-card strong { display: block; margin-top: 10px; font-size: 1.15rem; }
+    .newsletter { color: var(--white); background: linear-gradient(180deg, var(--tecsol-dark), #071521); }
+
+    .newsletter-form, .contact-form { display: grid; gap: 14px; }
+    .newsletter-form input, .contact-form input, .contact-form textarea {
+      width: 100%; min-height: 54px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06); color: var(--white); padding: 0 16px; outline: none;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .newsletter-form input::placeholder, .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.48); }
+    .newsletter-form input:focus, .contact-form input:focus, .contact-form textarea:focus {
+      border-color: rgba(0,180,255,0.45); background: rgba(255,255,255,0.08);
+    }
+    .contact-section { overflow: hidden; }
+    .contact-section::before {
+      content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 90% 10%, rgba(0,180,255,0.18), transparent 24%); pointer-events: none;
+    }
+    .contact-form {
+      position: relative; padding: 34px; border-color: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-form textarea { min-height: 160px; resize: vertical; padding: 16px; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .form-footer span { max-width: 420px; font-size: 0.9rem; }
+
+    .agency-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .agency-tags span {
+      padding: 10px 14px; border-radius: 999px; background: #f8fafc; border: 1px solid var(--border); color: #334155;
+    }
+    .agencies-footer {
+      margin-top: 24px; padding: 20px 22px; border-radius: 22px; color: var(--white);
+      background: linear-gradient(180deg, var(--tecsol-dark), #071521);
+    }
+
+    .section-title-box {
+      max-width: 880px; margin: 0 auto 58px; text-align: center;
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 700ms cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 80ms; }
+    .reveal-delay-2 { transition-delay: 160ms; }
+    .reveal-delay-3 { transition-delay: 240ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-card { transform: none !important; }
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid, .split-layout, .contact-layout, .news-layout, .dual-blocks { grid-template-columns: 1fr; }
+      .cards-grid, .stats-grid, .hero-pills, .news-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .menu-toggle { display: block; }
+      .main-nav {
+        position: absolute; top: calc(100% + 10px); right: 24px; left: 24px; display: none;
+        flex-direction: column; align-items: stretch; gap: 8px; padding: 16px; border-radius: 20px;
+        background: rgba(255,255,255,0.98); border: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .main-nav.is-open { display: flex; }
+      .main-nav a { padding: 12px 14px; border-radius: 14px; }
+      .main-nav a:hover { background: #f8fafc; }
+      .nav-cta { text-align: center; }
+      .cards-grid, .stats-grid, .hero-pills, .news-cards, .form-row, .hero-card-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 56px; }
+      .section { padding: 82px 0; }
+      .container { width: min(calc(100% - 32px), var(--container)); }
+      .hero-card, .news-main, .newsletter, .career-block, .agencies-block, .contact-form, .expert-card, .stat-card, .feature-item { padding: 24px; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .brand-logo { height: 52px; }
+      .hero h1 { font-size: 2.7rem; }
+      .section-heading h2, .split-intro h2, .career-block h2, .contact-intro h2 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-server"></i> Florent Penneçot
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#accueil" class="nav-link">Accueil</a></li>
-                <li><a href="#competences" class="nav-link">Compétences</a></li>
-                <li><a href="#projets" class="nav-link">Projets</a></li>
-                <li><a href="#formation" class="nav-link">Formation</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <img src="logo-9759.png" alt="Logo TECSOL" class="brand-logo" />
+      </a>
 
-    <!-- Accueil -->
-    <section id="accueil" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Technicien Réseaux & Systèmes</h1>
-                    <p class="subtitle">Étudiant en Bac Pro CIEL, futur BTS SIO SISR</p>
-                    <p class="description">
-                        Passionné d'informatique depuis mon plus jeune âge, j'explore l'infrastructure IT,
-                        la virtualisation et la cybersécurité. Autodidacte curieux, j'apprends en milieu professionnel
-                        et développe une expertise pratique à travers mes plusieurs stages technicien.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#competences" class="btn btn-primary">Voir mes compétences</a>
-                        <a href="assets/cv/CV-Florent-Pennecot.pdf" target="_blank" class="btn btn-primary">Voir CV</a>
-                        <a href="#contact" class="btn btn-secondary">Me contacter</a>
-                    </div>
-                </div>
-                <!-- Ajout de la photo dans un cercle -->
-    <div class="photo-container">
-        <img src="assets/images/Florent-Pennecot.jpeg" alt="Florent-Pennecot">
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#metiers">Photovoltaïque</a>
+        <a href="#metiers">Thermique</a>
+        <a href="#metiers">Supervision</a>
+        <a href="#metiers">Innovations</a>
+        <a href="#actualites">Actualités</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
     </div>
-</header>
-                    </div>
-                </div>
-            </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Bureau d’ingénierie solaire indépendant</div>
+          <h1>Rayonner dans un monde numérique.</h1>
+          <p class="hero-text">
+            Une vitrine plus statutaire, plus immersive et plus exigeante pour mettre en scène l’expertise TECSOL en photovoltaïque, solaire thermique, supervision, innovation et formation.
+          </p>
+          <div class="hero-actions">
+            <a href="#metiers" class="btn btn-primary">Découvrir nos métiers</a>
+            <a href="#pourquoi" class="btn btn-secondary">Pourquoi TECSOL</a>
+          </div>
+          <div class="hero-pills">
+            <div class="pill">Faisabilité / Maîtrise d’œuvre / Supervision / Formation</div>
+            <div class="pill">Expertise / Audit / Stratégie / Finance / Juridique</div>
+            <div class="pill">Présence nationale et accompagnement de proximité</div>
+          </div>
         </div>
+
+        <div class="hero-card reveal reveal-delay-1" id="heroCard">
+          <div class="hero-card-head">
+            <div>
+              <div class="card-kicker">Vision TECSOL</div>
+              <h2>Énergie solaire, ingénierie, donnée</h2>
+            </div>
+            <div class="card-tag">Corporate premium</div>
+          </div>
+
+          <div class="hero-card-main glass-card">
+            <div class="mini-top">
+              <span>Pilotage & expertise</span>
+              <span class="mini-dot"></span>
+            </div>
+            <strong>Exécution plus crédible</strong>
+            <p>Cartes premium, métriques valorisées, profondeur éditoriale et animations discrètes orientées lisibilité.</p>
+          </div>
+
+          <div class="hero-card-grid">
+            <div class="hero-subcard dark-card">
+              <div class="card-kicker">Innovation</div>
+              <strong>Formes, halos, réseaux</strong>
+              <p>Une esthétique technique et sobre inspirée des flux d’énergie et des systèmes connectés.</p>
+            </div>
+            <div class="hero-subcard glass-card">
+              <div class="card-kicker soft">Accessibilité</div>
+              <strong>Animations maîtrisées</strong>
+              <p>Réduction automatique des effets si l’utilisateur préfère limiter les animations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Compétences -->
-    <section id="competences" class="competences">
-        <div class="container">
-            <h2 class="section-title">Compétences Techniques</h2>
-            
-            <div class="competences-grid">
-                <!-- Systèmes d'exploitation -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-windows"></i>
-                        <h3>Systèmes d'Exploitation</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">Windows 10/11</span>
-                        <span class="tag">Windows Server</span>
-                        <span class="tag">Linux (Ubuntu) / Kali Linux</span>
-                        <span class="tag">Installation/Configuration</span>
-                    </div>
-                </div>
-
-                <!-- Réseaux -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-globe"></i>
-                        <h3>Réseaux & Protocoles</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">TCP/IP</span>
-                        <span class="tag">DHCP/DNS</span>
-                        <span class="tag">Cablage réseau</span>
-                        <span class="tag">Cisco Packet Tracer</span>
-                        <span class="tag">Diagnostic réseau</span>
-                    </div>
-                </div>
-
-                <!-- Matériel & Diagnostique -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-cube"></i>
-                        <h3>Matériel & Support</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">Assemblage PC</span>
-                        <span class="tag">Diagnostique matériel</span>
-                        <span class="tag">Remplacement composants</span>
-                        <span class="tag">Support technique</span>
-                    </div>
-                </div>
-
-                <!-- Virtualisation -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-server"></i>
-                        <h3>Virtualisation</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">VirtualBox</span>
-                        <span class="tag">VMware</span>
-                        <span class="tag">Infrastructure virtuelle</span>
-                        <span class="tag">Conteneurs (notions)</span>
-                        <span class="tag">Hyper-V</span>
-                    </div>
-                </div>
-
-                <!-- Cybersécurité -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Cybersécurité Appliquée</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">Sécurité réseau</span>
-                        <span class="tag">Gestion accès utilisateur</span>
-                        <span class="tag">Bonnes pratiques</span>
-                        <span class="tag">Audit documenté</span>
-                    </div>
-                </div>
-
-                <!-- Outils & Softskills -->
-                <div class="competence-card">
-                    <div class="competence-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Outils & Compétences</h3>
-                    </div>
-                    <div class="competence-list">
-                        <span class="tag">Office 365</span>
-                        <span class="tag">Draw.io/Visio</span>
-                        <span class="tag">Ticketing IT</span>
-                        <span class="tag">Teamwork & Communication</span>
-                        <span class="tag">WireShark</span>
-                        <span class="tag">NMAP</span>
-                    </div>
-                </div>
-            </div>
+    <section id="metiers" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Expertises</div>
+          <h2>Une architecture claire pour mieux valoriser chaque métier</h2>
+          <p>La page d’accueil devient une entrée de gamme premium vers les grands pôles TECSOL, avec cartes immersives, icônes élégantes et micro-interactions sobres.</p>
         </div>
+
+        <div class="cards-grid">
+          <article class="expert-card reveal"><div class="icon-badge">☀</div><h3>Photovoltaïque</h3><p>Faisabilité, maîtrise d’œuvre, dimensionnement, raccordement, autoconsommation et accompagnement opérationnel.</p><a href="#contact">En savoir plus</a></article>
+          <article class="expert-card reveal reveal-delay-1"><div class="icon-badge">≈</div><h3>Solaire thermique</h3><p>Études, ingénierie, optimisation de production et déploiement d’installations performantes à l’échelle des bâtiments et des territoires.</p><a href="#contact">En savoir plus</a></article>
+          <article class="expert-card reveal reveal-delay-2"><div class="icon-badge">▣</div><h3>Supervision</h3><p>Suivi d’exploitation, analyse de performance, pilotage des données et outils numériques au service de la continuité énergétique.</p><a href="#contact">En savoir plus</a></article>
+          <article class="expert-card reveal"><div class="icon-badge">✦</div><h3>Innovations</h3><p>Veille, développement de nouveaux usages, nouveaux montages et solutions à forte valeur ajoutée pour l’énergie solaire.</p><a href="#contact">En savoir plus</a></article>
+          <article class="expert-card reveal reveal-delay-1"><div class="icon-badge">⌁</div><h3>Formations & conférences</h3><p>Transmission du savoir-faire, montée en compétence des professionnels et partage de l’expertise solaire.</p><a href="#contact">En savoir plus</a></article>
+          <article class="expert-card reveal reveal-delay-2"><div class="icon-badge">✓</div><h3>Expertise transverse</h3><p>Audit, stratégie, finance, juridique et accompagnement décisionnel pour des projets fiables et bancables.</p><a href="#contact">En savoir plus</a></article>
+        </div>
+      </div>
     </section>
 
-    <!-- Projets -->
-    <section id="projets" class="projets">
-        <div class="container">
-            <h2 class="section-title">Mes Projets</h2>
-            
-            <div class="projets-grid">
-                <!-- Projet 1 - Diagramme Tecsol -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-diagram-project"></i>
-                    </div>
-                    <h3>Diagramme Infrastructure Tecsol</h3>
-                    <p class="projet-description">
-                        Réalisation d'un diagramme architectural complet de l'infrastructure de virtualisation 
-                        et conteneurs de Tecsol. Documentation de l'infrastructure multi-tiers avec le détail 
-                        des réseaux virtuels, serveurs et services.
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">TECSOL</span>
-                        <span class="tag-small">Infrastructure</span>
-                        <span class="tag-small">Virtualisation</span>
-                        <span class="tag-small">Documentation</span>
-                    </div>
-                </div>
-
-                <!-- Projet 2 - Stage Tecsol -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Technicien Réseaux & Développement - Tecsol</h3>
-                    <p class="projet-description">
-                        Stage terminal d'une durée de 3 semaines (23/03/2026 - 10/04/2026) en tant que 
-                        technicien réseaux et développement. Mise en pratique des compétences réseautiques 
-                        et infrastructures réelles en environnement professionnel.
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">TECSOL</span>
-                        <span class="tag-small">Support</span>
-                        <span class="tag-small">Réseaux</span>
-                        <span class="tag-small">Développement</span>
-                    </div>
-                </div>
-
-                <!-- Projet 3 - Stage LDLC Terminal -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-laptop"></i>
-                    </div>
-                    <h3>Installation & Diagnostique - LDLC</h3>
-                    <p class="projet-description">
-                        Stage de 3 semaines (03/11/2025 - 21/11/2025) consacré à l'installation et 
-                        diagnostique de matériel informatique. Expérience pratique en dépannage matériel, 
-                        tests et configuration de dispositifs clients.
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">LDLC</span>
-                        <span class="tag-small">Installation</span>
-                        <span class="tag-small">Conseiller</span>
-                        <span class="tag-small">Diagnostique</span>
-                    </div>
-                </div>
-
-                <!-- Projet 4 - Stage LOG66 -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Réseaux & Programmation - LOG66</h3>
-                    <p class="projet-description">
-                        Stage de 1 mois (12/05/2025 - 11/06/2025) en 1ère année. Installation, Support
-                        et dépannage de systèmes réseaux. Première expérience significative en administration 
-                        et configuration réseautique.
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">LOG66</span>
-                        <span class="tag-small">Réseaux</span>
-                        <span class="tag-small">Installation</span>
-                    </div>
-                </div>
-
-                <!-- Projet 5 - Stage PHENIXPC -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Installation & Dépannage - PHENIXPC</h3>
-                    <p class="projet-description">
-                        Stage de 4 semaines (13/01/2025 - 07/02/2025) dédié à l'installation, diagnostique 
-                        et dépannage informatique. Consolidation des compétences en technicien.
-
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">PHENIXPC</span>
-                        <span class="tag-small">Support</span>
-                        <span class="tag-small">Dépannage</span>
-                    </div>
-                </div>
-
-                <!-- Projet 6 - Stage LDLC 2nde -->
-                <div class="projet-card">
-                    <div class="projet-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Apprenti Technicien - LDLC</h3>
-                    <p class="projet-description">
-                        Stage de 4 semaines en classe de 2nde (21/05/2024 - 14/06/2024). Premiers pas en 
-                        installation et diagnostique informatique. Développement des compétences fondamentales 
-                        en technicien support.
-                    </p>
-                    <div class="projet-tags">
-                        <span class="tag-small">LDLC</span>
-                        <span class="tag-small">Débutant</span>
-                        <span class="tag-small">Formation</span>
-                    </div>
-                </div>
-            </div>
+    <section class="section section-dark" id="chiffres">
+      <div class="container">
+        <div class="section-heading light reveal">
+          <div class="eyebrow">Chiffres-clés</div>
+          <h2>Une crédibilité mise en scène avec sobriété</h2>
+          <p>Les chiffres TECSOL prennent plus de place, avec une animation discrète, des contrastes plus nobles et une présentation pensée pour rassurer immédiatement.</p>
         </div>
+        <div class="stats-grid">
+          <div class="stat-card reveal"><strong class="stat-number" data-target="40">0</strong><span class="stat-suffix">+</span><p>années d’expérience</p></div>
+          <div class="stat-card reveal reveal-delay-1"><strong class="stat-number" data-target="50">0</strong><p>ingénieurs</p></div>
+          <div class="stat-card reveal reveal-delay-2"><strong class="stat-number" data-target="8">0</strong><p>agences régionales</p></div>
+          <div class="stat-card reveal reveal-delay-3"><strong class="stat-number" data-target="15000">0</strong><p>personnes formées</p></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Formation -->
-    <section id="formation" class="formation">
-        <div class="container">
-            <h2 class="section-title">Formation & Certifications</h2>
-            
-            <div class="formation-timeline">
-                <!-- Formation 1 -->
-                <div class="formation-item">
-                    <div class="formation-marker">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="formation-content">
-                        <h3>Bac Pro CIEL - Formation en cours</h3>
-                        <p class="formation-institution">Lycée Professionnel</p>
-                        <p class="formation-date">
-                            <i class="fas fa-calendar"></i> 2023 - 2026
-                        </p>
-                        <p class="formation-description">
-                            Diplôme en Cybersécurité, Informatique et réseaux, Électronique. Formation complète 
-                            en électronique, informatique et réseaux avec mise en pratique par 7 stages 
-                            en entreprise.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Formation 2 - BTS -->
-                <div class="formation-item">
-                    <div class="formation-marker">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="formation-content">
-                        <h3>BTS SIO SISR - Futur</h3>
-                        <p class="formation-institution">À partir de septembre 2026</p>
-                        <p class="formation-date">
-                            <i class="fas fa-calendar"></i> 2026 - 2028
-                        </p>
-                        <p class="formation-description">
-                            Brevet de Technicien Supérieur option SISR 
-                            (Solutions d'Infrastructure, Systèmes et Réseaux). 
-                            Spécialisation en administration système et réseaux entreprise.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Certification 1 -->
-                <div class="formation-item">
-                    <div class="formation-marker certification">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="formation-content">
-                        <h3>B1V - Habilitation Électrique</h3>
-                        <p class="formation-institution">Certification Professionnelle</p>
-                        <p class="formation-date">
-                            <i class="fas fa-calendar"></i> Obtenue
-                        </p>
-                        <p class="formation-description">
-                            Habilitation B1V permettant d'intervenir sur les installations électriques 
-                            en basse tension. Attestation de compétence.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Certification 2 -->
-                <div class="formation-item">
-                    <div class="formation-marker certification">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="formation-content">
-                        <h3>Brevet des Collèges</h3>
-                        <p class="formation-institution">Diplôme National</p>
-                        <p class="formation-date">
-                            <i class="fas fa-calendar"></i> Obtenu
-                        </p>
-                        <p class="formation-description">
-                            Brevet des collèges avec mention .
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Skills additionnels -->
-                <div class="formation-item">
-                    <div class="formation-marker">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="formation-content">
-                        <h3>Compétences Linguistiques</h3>
-                        <p class="formation-institution">Anglais - Niveau B1V (76%)</p>
-                        <p class="formation-date">
-                            <i class="fas fa-calendar"></i> En développement
-                        </p>
-                        <p class="formation-description">
-                            Amélioration continue de mon niveau d’anglais, notamment dans un contexte technique (IT).
-Participation à des mobilités européennes Erasmus en Irlande et en Croatie, visant à renforcer mes compétences linguistiques à l’oral et à l’écrit dans un environnement international.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <section id="pourquoi" class="section">
+      <div class="container split-layout">
+        <div class="split-intro reveal">
+          <div class="eyebrow">Pourquoi TECSOL</div>
+          <h2>Un acteur de référence pour des projets solaires exigeants.</h2>
+          <p>La refonte doit exprimer à la fois l’ancienneté, la maîtrise technique, la capacité d’innovation et la proximité terrain. Le résultat recherché est plus statutaire, plus clair et plus rassurant.</p>
         </div>
+        <div class="feature-list">
+          <div class="feature-item reveal"><span>01</span><p>Indépendance et expertise historique du solaire</p></div>
+          <div class="feature-item reveal reveal-delay-1"><span>02</span><p>Approche globale : technique, économique, réglementaire et numérique</p></div>
+          <div class="feature-item reveal reveal-delay-2"><span>03</span><p>Présence nationale avec forte proximité territoriale</p></div>
+          <div class="feature-item reveal reveal-delay-3"><span>04</span><p>Posture crédible pour collectivités, industriels et grands comptes</p></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
-            
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form id="formulaire-contact" action="https://formspree.io/f/zcdkgdz" method="POST">
-                        <div class="form-group">
-                            <label for="nom">Nom</label>
-                            <input type="text" id="nom" name="nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="sujet">Sujet</label>
-                            <input type="text" id="sujet" name="sujet" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                    </form>
-                </div>
-
-                <div class="contact-info">
-                    <h3>Informations de Contact</h3>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:florent.pennecot@gmail.com">florent.pennecot@gmail.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p><a href="tel:+33603692812">+33 6 03 69 28 12</a></p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Localisation</h4>
-                            <p>Rivesaltes, France (Occitanie)</p>
-                        </div>
-                    </div>
-
-                    <h3 class="socials-title">Réseaux Sociaux</h3>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/florent-penneçot-8b000138a" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="section section-soft" id="actualites">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Actualités & veille</div>
+          <h2>Un traitement éditorial plus premium pour les contenus</h2>
+          <p>L’hebdo de l’énergie solaire, les analyses et les publications gagnent en lisibilité, en statut et en profondeur grâce à une composition plus magazine.</p>
         </div>
+        <div class="news-layout">
+          <article class="news-main reveal">
+            <div class="news-top">Focus éditorial</div>
+            <h3>L’hebdo de l’énergie solaire</h3>
+            <p>Une section signature, plus crédible et plus engageante, pensée comme un point d’entrée vers l’expertise et la veille stratégique du secteur.</p>
+            <div class="news-cards">
+              <div class="news-card"><span>Veille sectorielle</span><strong>L’hebdo de l’énergie solaire</strong><p>Une mise en avant éditoriale plus premium pour valoriser la veille technique, juridique et politique du secteur.</p></div>
+              <div class="news-card"><span>Analyse</span><strong>Décrypter les mutations du marché</strong><p>Créer un espace de contenus pensé comme un centre d’expertise, avec lecture rapide, profondeur et autorité éditoriale.</p></div>
+              <div class="news-card"><span>Connaissance</span><strong>Faire rayonner l’expertise TECSOL</strong><p>Articles, tribunes, conférences, retours d’expérience et ressources pour décideurs publics et privés.</p></div>
+            </div>
+          </article>
+          <aside class="newsletter reveal reveal-delay-1">
+            <div class="newsletter-top">Inscription newsletter</div>
+            <h3>Rester au plus près du solaire.</h3>
+            <p>Bloc de conversion premium, plus rassurant et plus engageant, pour mettre en avant la communauté TECSOL et l’expertise de veille.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="text" placeholder="Nom" />
+              <input type="email" placeholder="Adresse e-mail" />
+              <button type="submit" class="btn btn-primary btn-full">S’abonner</button>
+            </form>
+          </aside>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Florent Penneçot . Tous droits réservés.</p>
-            <p>Portfolio créé par mes compétences professionnelles</p>
+    <section class="section" id="agences">
+      <div class="container dual-blocks">
+        <div class="career-block reveal">
+          <div class="eyebrow">Recrutement</div>
+          <h2>Une section carrière plus humaine, plus désirable, plus contemporaine.</h2>
+          <p>Positionner TECSOL comme un collectif d’ingénieurs, d’experts et d’innovateurs engagés dans la transition énergétique, avec un ton plus attractif sans perdre le sérieux attendu.</p>
+          <div class="block-actions">
+            <a href="#contact" class="btn btn-dark">Voir les opportunités</a>
+            <a href="#contact" class="btn btn-secondary">Nous rejoindre</a>
+          </div>
         </div>
-    </footer>
+        <div class="agencies-block reveal reveal-delay-1">
+          <div class="agencies-top">Présence territoriale</div>
+          <h3>Une carte d’agences plus lisible et plus élégante</h3>
+          <p>Mettre en scène les implantations TECSOL avec un affichage interactif épuré, utile pour inspirer proximité, couverture nationale et qualité de service.</p>
+          <div class="agency-tags">
+            <span>Perpignan</span><span>Lyon</span><span>Strasbourg</span><span>Paris</span><span>Bordeaux</span><span>Toulouse</span><span>Orange</span><span>Angers</span>
+          </div>
+          <div class="agencies-footer">Proximité locale, standards élevés, couverture nationale.</div>
+        </div>
+      </div>
+    </section>
 
-    <script src="js/script.js"></script>
+    <section id="contact" class="section section-dark contact-section">
+      <div class="container contact-layout">
+        <div class="contact-intro reveal">
+          <div class="eyebrow">Contact</div>
+          <h2>Support</h2>
+          <p>Nous faisons de vos défis nos priorités.
+Chaque problématique est analysée avec rigueur afin d’apporter des solutions fiables, durables et adaptées à vos enjeux.
+À vos côtés, nous avançons avec exigence et engagement.</p>
+        </div>
+        <form class="contact-form reveal reveal-delay-1" id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Nom" />
+            <input type="text" placeholder="Entreprise" />
+          </div>
+          <div class="form-row">
+            <input type="email" placeholder="E-mail" />
+            <input type="text" placeholder="Téléphone" />
+          </div>
+          <textarea placeholder="Décrivez votre besoin"></textarea>
+          <div class="form-footer">
+            <span>Raccordement complexe, contraintes réglementaires, performance insuffisante, projet bloqué...</span>
+            <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const revealElements = document.querySelectorAll('.reveal');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const heroCard = document.getElementById('heroCard');
+    const contactForm = document.getElementById('contactForm');
+    const newsletterForm = document.getElementById('newsletterForm');
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('is-open');
+      });
+
+      mainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('is-open');
+        });
+      });
+    }
+
+    if (!prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat('fr-FR').format(value);
+    }
+
+    function animateCounter(element) {
+      const target = Number(element.dataset.target || 0);
+      const duration = 1500;
+      let startTimestamp = null;
+
+      function step(timestamp) {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(target * eased);
+        element.textContent = formatNumber(current);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          element.textContent = formatNumber(target);
+        }
+      }
+
+      window.requestAnimationFrame(step);
+    }
+
+    if (statNumbers.length > 0) {
+      if (!prefersReducedMotion) {
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+
+        statNumbers.forEach((stat) => statsObserver.observe(stat));
+      } else {
+        statNumbers.forEach((stat) => {
+          const target = Number(stat.dataset.target || 0);
+          stat.textContent = formatNumber(target);
+        });
+      }
+    }
+
+    if (!prefersReducedMotion && heroCard) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const offset = Math.max(scrolled * -0.04, -20);
+        heroCard.style.transform = `translateY(${offset}px)`;
+      }, { passive: true });
+    }
+
+    function handleDemoSubmit(event, message) {
+      event.preventDefault();
+      alert(message);
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        handleDemoSubmit(event, 'Formulaire de démonstration : raccorde ici votre traitement réel ou votre backend.');
+      });
+    }
+
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (event) => {
+        handleDemoSubmit(event, 'Inscription de démonstration : branche ici votre outil newsletter réel.');
+      });
+    }
+  </script>
 </body>
 </html>
