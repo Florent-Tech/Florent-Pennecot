@@ -26,6 +26,8 @@ navLinks.forEach(link => {
 const formulaireContact = document.getElementById('formulaire-contact');
 
 formulaireContact.addEventListener('submit', function(e) {
+    e.preventDefault();
+
     const nom = document.getElementById('nom').value;
     const email = document.getElementById('email').value;
     const sujet = document.getElementById('sujet').value;
@@ -33,26 +35,44 @@ formulaireContact.addEventListener('submit', function(e) {
 
     // Validation basique
     if (nom === '' || email === '' || sujet === '' || message === '') {
-        e.preventDefault();
         alert('Veuillez remplir tous les champs');
-        console.log('Erreur: Champs vides');
         return false;
     }
 
     // Validation email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        e.preventDefault();
-        alert('Veuillez entrer une adresse email valide (ex: votremail@example.com)');
-        console.log('Erreur: Email invalide:', email);
+        alert('Veuillez entrer une adresse email valide');
         return false;
     }
 
-    console.log('Formulaire valide, envoi à Formspree...', {nom, email, sujet, message});
-    
-    // Laisser le formulaire se soumettre normalement à Formspree
-    // (Ne pas utiliser e.preventDefault())
-    return true;
+    // Désactiver le bouton pendant l'envoi
+    const submitBtn = formulaireContact.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    // Envoyer avec EmailJS
+    emailjs.send('service_f4m5324', 'template_a29d3r8', {
+        from_name: nom,
+        from_email: email,
+        subject: sujet,
+        message: message,
+        reply_to: email
+    })
+    .then((response) => {
+        alert(`Merci ${nom}! Votre message a été envoyé avec succès. Je vous répondrai à ${email} dans les plus brefs délais.`);
+        formulaireContact.reset();
+        console.log('Message envoyé avec succès!', response);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    })
+    .catch((error) => {
+        alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+        console.error('Erreur EmailJS:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    });
 });
 
 // ============================================
