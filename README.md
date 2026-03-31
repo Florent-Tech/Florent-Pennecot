@@ -94,7 +94,7 @@ Passionné par l’informatique depuis mon plus jeune âge, je m’oriente vers 
 ## 📂 Portfolio
 
 🔗 Accéder au site :  
-👉 **[Voir mon portfolio](https://ton-lien.github.io)**
+👉 **[Voir mon portfolio](https://florent-tech.github.io/Florent-Pennecot/)**
 
 📌 Contenu :
 - Présentation
