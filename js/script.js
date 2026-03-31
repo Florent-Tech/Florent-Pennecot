@@ -26,8 +26,6 @@ navLinks.forEach(link => {
 const formulaireContact = document.getElementById('formulaire-contact');
 
 formulaireContact.addEventListener('submit', function(e) {
-    e.preventDefault();
-
     const nom = document.getElementById('nom').value;
     const email = document.getElementById('email').value;
     const sujet = document.getElementById('sujet').value;
@@ -35,30 +33,26 @@ formulaireContact.addEventListener('submit', function(e) {
 
     // Validation basique
     if (nom === '' || email === '' || sujet === '' || message === '') {
+        e.preventDefault();
         alert('Veuillez remplir tous les champs');
-        return;
+        console.log('Erreur: Champs vides');
+        return false;
     }
 
-    // Afficher un message de succès (dans un cas réel, on enverrait à un serveur)
-    alert(`Merci ${nom}! Votre message a été reçu. Je vous répondrai à ${email} dans les plus brefs délais.`);
+    // Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        e.preventDefault();
+        alert('Veuillez entrer une adresse email valide (ex: votremail@example.com)');
+        console.log('Erreur: Email invalide:', email);
+        return false;
+    }
 
-    // Réinitialiser le formulaire
-    formulaireContact.reset();
-
-    // Dans un cas réel, on pourrait faire :
-    // fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ nom, email, sujet, message })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     alert('Message envoyé avec succès!');
-    //     formulaireContact.reset();
-    // })
-    // .catch(error => console.error('Erreur:', error));
+    console.log('Formulaire valide, envoi à Formspree...', {nom, email, sujet, message});
+    
+    // Laisser le formulaire se soumettre normalement à Formspree
+    // (Ne pas utiliser e.preventDefault())
+    return true;
 });
 
 // ============================================
