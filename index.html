@@ -1,204 +1,459 @@
-// ============================================
-// GESTION DU MENU HAMBURGER
-// ============================================
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florent Penneçot - Technicien Réseaux & Systèmes | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-server"></i> Florent Penneçot
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#competences" class="nav-link">Compétences</a></li>
+                <li><a href="#projets" class="nav-link">Projets</a></li>
+                <li><a href="#formation" class="nav-link">Formation</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+    <!-- Accueil -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Technicien Réseaux & Systèmes</h1>
+                    <p class="subtitle">Étudiant en Bac Pro CIEL, futur BTS SIO SISR</p>
+                    <p class="description">
+                        Passionné d'informatique depuis mon plus jeune âge, j'explore l'infrastructure IT,
+                        la virtualisation et la cybersécurité. Autodidacte curieux, j'apprends en milieu professionnel
+                        et développe une expertise pratique à travers mes plusieurs stages technicien.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#competences" class="btn btn-primary">Voir mes compétences</a>
+                        <a href="assets/cv/CV-Florent-Pennecot.pdf" target="_blank" class="btn btn-primary">Voir CV</a>
+                        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                    </div>
+                </div>
+                <!-- Ajout de la photo dans un cercle -->
+    <div class="photo-container">
+        <img src="assets/images/Florent-Pennecot.jpeg" alt="Florent-Pennecot">
+    </div>
+</header>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
+    <!-- Compétences -->
+    <section id="competences" class="competences">
+        <div class="container">
+            <h2 class="section-title">Compétences Techniques</h2>
+            
+            <div class="competences-grid">
+                <!-- Systèmes d'exploitation -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-windows"></i>
+                        <h3>Systèmes d'Exploitation</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">Windows 10/11</span>
+                        <span class="tag">Windows Server</span>
+                        <span class="tag">Linux (Ubuntu) / Kali Linux</span>
+                        <span class="tag">Installation/Configuration</span>
+                    </div>
+                </div>
 
-// Fermer le menu quand on clique sur un lien
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
+                <!-- Réseaux -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-globe"></i>
+                        <h3>Réseaux & Protocoles</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">TCP/IP</span>
+                        <span class="tag">DHCP/DNS</span>
+                        <span class="tag">Cablage réseau</span>
+                        <span class="tag">Cisco Packet Tracer</span>
+                        <span class="tag">Diagnostic réseau</span>
+                    </div>
+                </div>
 
-// ============================================
-// GESTION DU FORMULAIRE DE CONTACT
-// ============================================
+                <!-- Matériel & Diagnostique -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-cube"></i>
+                        <h3>Matériel & Support</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">Assemblage PC</span>
+                        <span class="tag">Diagnostique matériel</span>
+                        <span class="tag">Remplacement composants</span>
+                        <span class="tag">Support technique</span>
+                    </div>
+                </div>
 
-const formulaireContact = document.getElementById('formulaire-contact');
+                <!-- Virtualisation -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Virtualisation</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">VirtualBox</span>
+                        <span class="tag">VMware</span>
+                        <span class="tag">Infrastructure virtuelle</span>
+                        <span class="tag">Conteneurs (notions)</span>
+                        <span class="tag">Hyper-V</span>
+                    </div>
+                </div>
 
-formulaireContact.addEventListener('submit', function(e) {
-    e.preventDefault();
+                <!-- Cybersécurité -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Cybersécurité Appliquée</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">Sécurité réseau</span>
+                        <span class="tag">Gestion accès utilisateur</span>
+                        <span class="tag">Bonnes pratiques</span>
+                        <span class="tag">Audit documenté</span>
+                    </div>
+                </div>
 
-    const nom = document.getElementById('nom').value;
-    const email = document.getElementById('email').value;
-    const sujet = document.getElementById('sujet').value;
-    const message = document.getElementById('message').value;
+                <!-- Outils & Softskills -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Outils & Compétences</h3>
+                    </div>
+                    <div class="competence-list">
+                        <span class="tag">Office 365</span>
+                        <span class="tag">Draw.io/Visio</span>
+                        <span class="tag">Ticketing IT</span>
+                        <span class="tag">Teamwork & Communication</span>
+                        <span class="tag">WireShark</span>
+                        <span class="tag">NMAP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Validation basique
-    if (nom === '' || email === '' || sujet === '' || message === '') {
-        alert('Veuillez remplir tous les champs');
-        return false;
-    }
+    <!-- Projets -->
+    <section id="projets" class="projets">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            
+            <div class="projets-grid">
+                <!-- Projet 1 - Diagramme Tecsol -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <h3>Diagramme Infrastructure Tecsol</h3>
+                    <p class="projet-description">
+                        Réalisation d'un diagramme architectural complet de l'infrastructure de virtualisation 
+                        et conteneurs de Tecsol. Documentation de l'infrastructure multi-tiers avec le détail 
+                        des réseaux virtuels, serveurs et services.
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">TECSOL</span>
+                        <span class="tag-small">Infrastructure</span>
+                        <span class="tag-small">Virtualisation</span>
+                        <span class="tag-small">Documentation</span>
+                    </div>
+                </div>
 
-    // Validation email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Veuillez entrer une adresse email valide');
-        return false;
-    }
+                <!-- Projet 2 - Stage Tecsol -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Technicien Réseaux & Développement - Tecsol</h3>
+                    <p class="projet-description">
+                        Stage terminal d'une durée de 3 semaines (23/03/2026 - 10/04/2026) en tant que 
+                        technicien réseaux et développement. Mise en pratique des compétences réseautiques 
+                        et infrastructures réelles en environnement professionnel.
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">TECSOL</span>
+                        <span class="tag-small">Support</span>
+                        <span class="tag-small">Réseaux</span>
+                        <span class="tag-small">Développement</span>
+                    </div>
+                </div>
 
-    // Désactiver le bouton pendant l'envoi
-    const submitBtn = formulaireContact.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours...';
+                <!-- Projet 3 - Stage LDLC Terminal -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Installation & Diagnostique - LDLC</h3>
+                    <p class="projet-description">
+                        Stage de 3 semaines (03/11/2025 - 21/11/2025) consacré à l'installation et 
+                        diagnostique de matériel informatique. Expérience pratique en dépannage matériel, 
+                        tests et configuration de dispositifs clients.
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">LDLC</span>
+                        <span class="tag-small">Installation</span>
+                        <span class="tag-small">Conseiller</span>
+                        <span class="tag-small">Diagnostique</span>
+                    </div>
+                </div>
 
-    // Envoyer avec EmailJS
-    emailjs.send('service_f4m5324', 'template_0uoxsbr', {
-        from_name: nom,
-        from_email: email,
-        subject: sujet,
-        message: message,
-        reply_to: email
-    })
-    .then((response) => {
-        alert(`Merci ${nom}! Votre message a été envoyé avec succès. Je vous répondrai à ${email} dans les plus brefs délais.`);
-        formulaireContact.reset();
-        console.log('Message envoyé avec succès!', response);
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    })
-    .catch((error) => {
-        console.error('Erreur EmailJS complète:', error);
-        console.error('Message:', error.message);
-        console.error('Statut:', error.status);
-        alert('Erreur : ' + (error.message || error.text || 'Erreur inconnue'));
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-    });
-});
+                <!-- Projet 4 - Stage LOG66 -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Réseaux & Programmation - LOG66</h3>
+                    <p class="projet-description">
+                        Stage de 1 mois (12/05/2025 - 11/06/2025) en 1ère année. Installation, Support
+                        et dépannage de systèmes réseaux. Première expérience significative en administration 
+                        et configuration réseautique.
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">LOG66</span>
+                        <span class="tag-small">Réseaux</span>
+                        <span class="tag-small">Installation</span>
+                    </div>
+                </div>
 
-// ============================================
-// ANIMATIONS AU SCROLL
-// ============================================
+                <!-- Projet 5 - Stage PHENIXPC -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Installation & Dépannage - PHENIXPC</h3>
+                    <p class="projet-description">
+                        Stage de 4 semaines (13/01/2025 - 07/02/2025) dédié à l'installation, diagnostique 
+                        et dépannage informatique. Consolidation des compétences en technicien.
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">PHENIXPC</span>
+                        <span class="tag-small">Support</span>
+                        <span class="tag-small">Dépannage</span>
+                    </div>
+                </div>
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+                <!-- Projet 6 - Stage LDLC 2nde -->
+                <div class="projet-card">
+                    <div class="projet-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Apprenti Technicien - LDLC</h3>
+                    <p class="projet-description">
+                        Stage de 4 semaines en classe de 2nde (21/05/2024 - 14/06/2024). Premiers pas en 
+                        installation et diagnostique informatique. Développement des compétences fondamentales 
+                        en technicien support.
+                    </p>
+                    <div class="projet-tags">
+                        <span class="tag-small">LDLC</span>
+                        <span class="tag-small">Débutant</span>
+                        <span class="tag-small">Formation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Observer les cartes
-const cards = document.querySelectorAll('.competence-card, .projet-card, .formation-content');
-cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'all 0.5s ease';
-    observer.observe(card);
-});
+    <!-- Formation -->
+    <section id="formation" class="formation">
+        <div class="container">
+            <h2 class="section-title">Formation & Certifications</h2>
+            
+            <div class="formation-timeline">
+                <!-- Formation 1 -->
+                <div class="formation-item">
+                    <div class="formation-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="formation-content">
+                        <h3>Bac Pro CIEL - Formation en cours</h3>
+                        <p class="formation-institution">Lycée Professionnel</p>
+                        <p class="formation-date">
+                            <i class="fas fa-calendar"></i> 2023 - 2026
+                        </p>
+                        <p class="formation-description">
+                            Diplôme en Cybersécurité, Informatique et réseaux, Électronique. Formation complète 
+                            en électronique, informatique et réseaux avec mise en pratique par 7 stages 
+                            en entreprise.
+                        </p>
+                    </div>
+                </div>
 
-// ============================================
-// SMOOTH SCROLL POUR LES ANCRES
-// ============================================
+                <!-- Formation 2 - BTS -->
+                <div class="formation-item">
+                    <div class="formation-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="formation-content">
+                        <h3>BTS SIO SISR - Futur</h3>
+                        <p class="formation-institution">À partir de septembre 2026</p>
+                        <p class="formation-date">
+                            <i class="fas fa-calendar"></i> 2026 - 2028
+                        </p>
+                        <p class="formation-description">
+                            Brevet de Technicien Supérieur option SISR 
+                            (Solutions d'Infrastructure, Systèmes et Réseaux). 
+                            Spécialisation en administration système et réseaux entreprise.
+                        </p>
+                    </div>
+                </div>
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
-});
+                <!-- Certification 1 -->
+                <div class="formation-item">
+                    <div class="formation-marker certification">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="formation-content">
+                        <h3>B1V - Habilitation Électrique</h3>
+                        <p class="formation-institution">Certification Professionnelle</p>
+                        <p class="formation-date">
+                            <i class="fas fa-calendar"></i> Obtenue
+                        </p>
+                        <p class="formation-description">
+                            Habilitation B1V permettant d'intervenir sur les installations électriques 
+                            en basse tension. Attestation de compétence.
+                        </p>
+                    </div>
+                </div>
 
-// ============================================
-// BARRE DE NAVIGATION STICKY
-// ============================================
+                <!-- Certification 2 -->
+                <div class="formation-item">
+                    <div class="formation-marker certification">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="formation-content">
+                        <h3>Brevet des Collèges</h3>
+                        <p class="formation-institution">Diplôme National</p>
+                        <p class="formation-date">
+                            <i class="fas fa-calendar"></i> Obtenu
+                        </p>
+                        <p class="formation-description">
+                            Brevet des collèges avec mention .
+                        </p>
+                    </div>
+                </div>
 
-let navbar = document.querySelector('.navbar');
-let lastScrollTop = 0;
+                <!-- Skills additionnels -->
+                <div class="formation-item">
+                    <div class="formation-marker">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="formation-content">
+                        <h3>Compétences Linguistiques</h3>
+                        <p class="formation-institution">Anglais - Niveau B1V (76%)</p>
+                        <p class="formation-date">
+                            <i class="fas fa-calendar"></i> En développement
+                        </p>
+                        <p class="formation-description">
+                            Amélioration continue de mon niveau d’anglais, notamment dans un contexte technique (IT).
+Participation à des mobilités européennes Erasmus en Irlande et en Croatie, visant à renforcer mes compétences linguistiques à l’oral et à l’écrit dans un environnement international.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-        // Scroll vers le bas
-        navbar.style.boxShadow = 'var(--shadow-lg)';
-    } else {
-        // Scroll vers le haut
-        navbar.style.boxShadow = 'var(--shadow)';
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-moi</h2>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="formulaire-contact">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sujet">Sujet</label>
+                            <input type="text" id="sujet" name="sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </form>
+                </div>
 
-// ============================================
-// COMPTEUR POUR LES STATISTIQUES
-// ============================================
+                <div class="contact-info">
+                    <h3>Informations de Contact</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:florent.pennecot@gmail.com">florent.pennecot@gmail.com</a></p>
+                        </div>
+                    </div>
 
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-}
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:+33603692812">+33 6 03 69 28 12</a></p>
+                        </div>
+                    </div>
 
-// Appeler si des éléments de comptage existent
-const counters = document.querySelectorAll('[data-count]');
-counters.forEach(counter => {
-    const target = parseInt(counter.getAttribute('data-count'));
-    const observer2 = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && !counter.classList.contains('animated')) {
-            animateCounter(counter, target);
-            counter.classList.add('animated');
-            observer2.unobserve(counter);
-        }
-    });
-    observer2.observe(counter);
-});
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Localisation</h4>
+                            <p>Rivesaltes, France (Occitanie)</p>
+                        </div>
+                    </div>
 
-// ============================================
-// VALIDATION DU FORMULAIRE EN TEMPS RÉEL
-// ============================================
+                    <h3 class="socials-title">Réseaux Sociaux</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/florent-penneçot-8b000138a" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-const inputs = document.querySelectorAll('input, textarea');
-inputs.forEach(input => {
-    input.addEventListener('blur', function() {
-        if (this.value.trim() === '') {
-            this.style.borderColor = '#e74c3c';
-        } else {
-            this.style.borderColor = '#27ae60';
-        }
-    });
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Florent Penneçot . Tous droits réservés.</p>
+            <p>Portfolio créé par mes compétences professionnelles</p>
+        </div>
+    </footer>
 
-    input.addEventListener('focus', function() {
-        this.style.borderColor = 'var(--accent-color)';
-    });
-});
-
-// ============================================
-// INITIALISATION
-// ============================================
-
-console.log('Portfolio chargé avec succès!');
+    <script type="text/javascript" src="https://unpkg.com/@emailjs/browser@3/dist/index.min.js"></script>
+    <script>
+        // Initialisation EmailJS
+        emailjs.init("JgRY19A2XkPam1t25");
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
