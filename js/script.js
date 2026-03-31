@@ -53,7 +53,7 @@ formulaireContact.addEventListener('submit', function(e) {
     submitBtn.textContent = 'Envoi en cours...';
 
     // Envoyer avec EmailJS
-    emailjs.send('service_f4m5324', 'template_a29d3r8', {
+    emailjs.send('service_f4m5324', 'template_0uoxsbr', {
         from_name: nom,
         from_email: email,
         subject: sujet,
@@ -68,8 +68,10 @@ formulaireContact.addEventListener('submit', function(e) {
         submitBtn.textContent = originalText;
     })
     .catch((error) => {
-        alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
-        console.error('Erreur EmailJS:', error);
+        console.error('Erreur EmailJS complète:', error);
+        console.error('Message:', error.message);
+        console.error('Statut:', error.status);
+        alert('Erreur : ' + (error.message || error.text || 'Erreur inconnue'));
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
     });
